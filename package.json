@@ -1,0 +1,30 @@
+{
+  "name": "open_secrets",
+  "version": "0.0.1",
+  "description": "NodeJS toolset for working with the OpenSecrets API",
+  "main": "index.js",
+  "scripts": {
+    "test": "jasmine-node test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/voltaicio/open_secrets"
+  },
+  "keywords": [
+    "open_secrets",
+    "opensecrets"
+  ],
+  "author": "Jonathan D. Baker <jonathan@voltaic.io>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/voltaicio/open_secrets/issues"
+  },
+  "homepage": "https://github.com/voltaicio/open_secrets",
+  "devDependencies": {
+    "jasmine-node": "^1.14.5"
+  },
+  "dependencies": {
+    "commander": "^2.6.0",
+    "request": "^2.53.0"
+  }
+}
