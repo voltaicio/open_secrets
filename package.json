@@ -6,6 +6,7 @@
   "scripts": {
     "test": "jasmine-node test"
   },
+  "bin": "./open_secrets.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/voltaicio/open_secrets"
