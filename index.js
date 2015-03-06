@@ -169,6 +169,25 @@ OpenSecrets.prototype.getOrgs = function(config, callback) {
 
 
 /**
+ * Prepares a request for the 'memPFDprofile' OpenSecrets API endpoint.
+ *
+ * @param {Object} config
+ * @param {String} config.cid
+ * @param {String} config.output
+ * @param {Number} config.year
+ * @param {Function} callback
+ * @return {Null}
+ * @see {@link https://www.opensecrets.org/api/?output=doc&method=memPFDprofile|OpenSecrets}
+ */
+OpenSecrets.prototype.memPFDprofile = function(config, callback) {
+    return this._makeRequest({
+        method: "memPFDprofile",
+        params: config,
+    }, callback);
+};
+
+
+/**
  * Sends a HTTP GET request to the OpenSecrets API.
  *
  * @param {Object} config

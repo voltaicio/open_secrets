@@ -61,3 +61,10 @@ client.getOrgs({ org: "googl" }, function(err, res) {
     console.log("########### getOrgs ###########");
     console.log(res.body);
 });
+
+client.memPFDprofile(
+        { cid: "N00008051", output: "xml", year: 2010 }, function(err, res) {
+    if (err) { throw err; }
+    console.log("########### memPFDprofile ###########");
+    console.log(res.body);
+});

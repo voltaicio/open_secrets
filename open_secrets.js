@@ -16,6 +16,7 @@ program
     .option("--indus [string]", "3-character industry code")
     .option("--org [string]", "name or partial name of organization")
     .option("--output [string]", "output format, either json, xml or doc")
+    .option("--year [integer]", "2010 data provided")
     .option("--verbose [boolean]", "display verbose HTTP response")
     .usage("<api_key> <method> [options]")
     .version("0.0.1")
@@ -63,6 +64,11 @@ switch (method) {
         break;
     case "getOrgs":
         options.org = program.org;
+        break;
+    case "memPFDprofile":
+        options.cid = program.cid;
+        options.output = program.output;
+        options.year = program.year;
         break;
     default:
         console.error("Unsupported method: " + method);
