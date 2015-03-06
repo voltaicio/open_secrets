@@ -152,6 +152,23 @@ OpenSecrets.prototype.getLegislators = function(config, callback) {
 
 
 /**
+ * Prepares a request for the 'getOrgs' OpenSecrets API endpoint.
+ *
+ * @param {Object} config
+ * @param {String} config.org
+ * @param {Function} callback
+ * @return {Null}
+ * @see {@link https://www.opensecrets.org/api/?output=doc&method=getOrgs|OpenSecrets}
+ */
+OpenSecrets.prototype.getOrgs = function(config, callback) {
+    return this._makeRequest({
+        method: "getOrgs",
+        params: config,
+    }, callback);
+};
+
+
+/**
  * Sends a HTTP GET request to the OpenSecrets API.
  *
  * @param {Object} config

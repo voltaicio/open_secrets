@@ -52,6 +52,12 @@ client.congCmteIndus(
 
 client.getLegislators({ output: "json", id: "CO" }, function(err, res) {
     if (err) { throw err; }
-    console.log("########### congCmteIndus ###########");
+    console.log("########### getLegislators ###########");
     console.log(JSON.parse(res.body)["response"]["legislator"]);
+});
+
+client.getOrgs({ org: "googl" }, function(err, res) {
+    if (err) { throw err; }
+    console.log("########### getOrgs ###########");
+    console.log(res.body);
 });

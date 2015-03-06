@@ -14,6 +14,7 @@ program
         "--id [string]", "2-character state code, 4-character district or specific CID")
     .option("--ind [string]", "3-character industry code")
     .option("--indus [string]", "3-character industry code")
+    .option("--org [string]", "name or partial name of organization")
     .option("--output [string]", "output format, either json, xml or doc")
     .option("--verbose [boolean]", "display verbose HTTP response")
     .usage("<api_key> <method> [options]")
@@ -59,6 +60,9 @@ switch (method) {
     case "getLegislators":
         options.id = program.id;
         options.output = program.output;
+        break;
+    case "getOrgs":
+        options.org = program.org;
         break;
     default:
         console.error("Unsupported method: " + method);
