@@ -37,6 +37,24 @@ OpenSecrets.prototype.candContrib = function(config, callback) {
 
 
 /**
+ * Prepares a request for the 'candIndByInd' OpenSecrets API endpoint.
+ *
+ * @param {Object} config
+ * @param {String} config.cid
+ * @param {Number} config.cycle
+ * @param {String} config.ind
+ * @param {Function} callback
+ * @return {Null}
+ */
+OpenSecrets.prototype.candIndByInd = function(config, callback) {
+    return this._makeRequest({
+        method: "candIndByInd",
+        params: config,
+    }, callback);
+};
+
+
+/**
  * Sends a HTTP GET request to the OpenSecrets API.
  *
  * @param {Object} config

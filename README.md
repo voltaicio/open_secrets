@@ -29,7 +29,7 @@ Example:
 
     var client = new OpenSecretsClient("<api_key>"),
         config = {
-            cid: "N00007360",
+            cid: "N00008051",
             cycle: 2014,
             output: "json"
         },
@@ -49,7 +49,7 @@ Format:
 
 Example:
 
-    $ ./open_secrets.js 0123456789 candContrib --cid=N00007360 --cycle=2014 --output=json
+    $ ./open_secrets.js 0123456789 candContrib --cid=N00008051 --cycle=2014 --output=json
 
 Examples
 --------
