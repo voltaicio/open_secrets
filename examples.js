@@ -42,3 +42,10 @@ client.candSummary(
     console.log("########### candSummary ###########");
     console.log(JSON.parse(res.body)["response"]["summary"]["@attributes"]);
 });
+
+client.congCmteIndus(
+        { cmte: "HARM", congno: 112, indus: "F10", output: "json" }, function(err, res) {
+    if (err) { throw err; }
+    console.log("########### congCmteIndus ###########");
+    console.log(JSON.parse(res.body)["response"]["committee"]["member"]);
+});

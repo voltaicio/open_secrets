@@ -7,9 +7,12 @@ var OpenSecretsClient = require("./index"),
 
 program
     .option("--cid [string]", "candidate identification")
+    .option("--cmte [string]", "committee ID in CQ format")
+    .option("--congno [integer]", "112 (uses 2012 data) or 113 (uses 2014 data)")
     .option("--cycle [integer]", "2012 or 2014")
     .option("--ind [string]", "3-character industry code")
-    .option("--output [string]", "output format")
+    .option("--indus [string]", "3-character industry code")
+    .option("--output [string]", "output format, either json, xml or doc")
     .option("--verbose [boolean]", "display verbose HTTP response")
     .usage("<api_key> <method> [options]")
     .version("0.0.1")
@@ -44,6 +47,12 @@ switch (method) {
         options.cid = program.cid;
         options.cycle = program.cycle;
         options.ind = program.ind;
+        break;
+    case "congCmteIndus":
+        options.cmte = program.cmte;
+        options.congno = program.congno;
+        options.indus = program.indus;
+        options.output = program.output;
         break;
     default:
         console.error("Unsupported method: " + method);

@@ -102,6 +102,21 @@ describe("candSummary", function() {
     });
 });
 
+describe("congCmteIndus", function() {
+    it("calls '_makeRequest'", function() {
+        var client = new OpenSecretsClient(API_KEY),
+            cfg = {
+                method: "congCmteIndus",
+                params: {}
+            },
+            callback = function() {};
+
+        spyOn(client, "_makeRequest");
+        client.congCmteIndus(cfg.params, callback);
+        expect(client._makeRequest).toHaveBeenCalledWith(cfg, callback);
+    });
+});
+
 describe("_makeRequest", function() {
     it("calls 'request'", function() {
         var client = new OpenSecretsClient(API_KEY);

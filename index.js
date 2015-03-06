@@ -114,6 +114,26 @@ OpenSecrets.prototype.candSummary = function(config, callback) {
 
 
 /**
+ * Prepares a request for the 'congCmteIndus' OpenSecrets API endpoint.
+ *
+ * @param {Object} config
+ * @param {String} config.cmte
+ * @param {Number} config.congno
+ * @param {String} config.indus
+ * @param {String} config.output
+ * @param {Function} callback
+ * @return {Null}
+ * @see {@link https://www.opensecrets.org/api/?output=doc&method=congCmteIndus|OpenSecrets}
+ */
+OpenSecrets.prototype.congCmteIndus = function(config, callback) {
+    return this._makeRequest({
+        method: "congCmteIndus",
+        params: config,
+    }, callback);
+};
+
+
+/**
  * Sends a HTTP GET request to the OpenSecrets API.
  *
  * @param {Object} config
