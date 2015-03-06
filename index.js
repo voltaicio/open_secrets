@@ -95,6 +95,25 @@ OpenSecrets.prototype.candSector = function(config, callback) {
 
 
 /**
+ * Prepares a request for the 'candSummary' OpenSecrets API endpoint.
+ *
+ * @param {Object} config
+ * @param {String} config.cid
+ * @param {Number} config.cycle
+ * @param {String} config.output
+ * @param {Function} callback
+ * @return {Null}
+ * @see {@link https://www.opensecrets.org/api/?output=doc&method=candSummary|OpenSecrets}
+ */
+OpenSecrets.prototype.candSummary = function(config, callback) {
+    return this._makeRequest({
+        method: "candSummary",
+        params: config,
+    }, callback);
+};
+
+
+/**
  * Sends a HTTP GET request to the OpenSecrets API.
  *
  * @param {Object} config

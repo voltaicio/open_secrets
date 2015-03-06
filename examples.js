@@ -35,3 +35,10 @@ client.candSector(
     console.log("########### candSector ###########");
     console.log(JSON.parse(res.body)["response"]["sectors"]["sector"]);
 });
+
+client.candSummary(
+        { cid: "N00008051", cycle: 2014, output: "json" }, function(err, res) {
+    if (err) { throw err; }
+    console.log("########### candSummary ###########");
+    console.log(JSON.parse(res.body)["response"]["summary"]["@attributes"]);
+});

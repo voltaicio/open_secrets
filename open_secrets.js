@@ -35,6 +35,7 @@ switch (method) {
     case "candContrib":
     case "candIndustry":
     case "candSector":
+    case "candSummary":
         options.cid = program.cid;
         options.cycle = program.cycle;
         options.output = program.output;
