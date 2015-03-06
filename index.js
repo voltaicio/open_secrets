@@ -134,6 +134,24 @@ OpenSecrets.prototype.congCmteIndus = function(config, callback) {
 
 
 /**
+ * Prepares a request for the 'getLegislators' OpenSecrets API endpoint.
+ *
+ * @param {Object} config
+ * @param {String} config.output
+ * @param {String} config.id
+ * @param {Function} callback
+ * @return {Null}
+ * @see {@link https://www.opensecrets.org/api/?output=doc&method=getLegislators|OpenSecrets}
+ */
+OpenSecrets.prototype.getLegislators = function(config, callback) {
+    return this._makeRequest({
+        method: "getLegislators",
+        params: config,
+    }, callback);
+};
+
+
+/**
  * Sends a HTTP GET request to the OpenSecrets API.
  *
  * @param {Object} config

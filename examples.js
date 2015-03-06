@@ -49,3 +49,9 @@ client.congCmteIndus(
     console.log("########### congCmteIndus ###########");
     console.log(JSON.parse(res.body)["response"]["committee"]["member"]);
 });
+
+client.getLegislators({ output: "json", id: "CO" }, function(err, res) {
+    if (err) { throw err; }
+    console.log("########### congCmteIndus ###########");
+    console.log(JSON.parse(res.body)["response"]["legislator"]);
+});
