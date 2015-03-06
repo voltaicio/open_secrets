@@ -70,6 +70,9 @@ switch (method) {
         options.output = program.output;
         options.year = program.year;
         break;
+    case "orgSummary":
+        options.id = program.id;
+        break;
     default:
         console.error("Unsupported method: " + method);
 }

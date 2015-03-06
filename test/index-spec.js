@@ -162,6 +162,21 @@ describe("memPFDprofile", function() {
     });
 });
 
+describe("orgSummary", function() {
+    it("calls '_makeRequest'", function() {
+        var client = new OpenSecretsClient(API_KEY),
+            cfg = {
+                method: "orgSummary",
+                params: {}
+            },
+            callback = function() {};
+
+        spyOn(client, "_makeRequest");
+        client.orgSummary(cfg.params, callback);
+        expect(client._makeRequest).toHaveBeenCalledWith(cfg, callback);
+    });
+});
+
 describe("_makeRequest", function() {
     it("calls 'request'", function() {
         var client = new OpenSecretsClient(API_KEY);

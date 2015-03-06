@@ -68,3 +68,9 @@ client.memPFDprofile(
     console.log("########### memPFDprofile ###########");
     console.log(res.body);
 });
+
+client.orgSummary({ id: "D000022008" }, function(err, res) {
+    if (err) { throw err; }
+    console.log("########### orgSummary ###########");
+    console.log(res.body);
+});

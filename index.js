@@ -188,6 +188,23 @@ OpenSecrets.prototype.memPFDprofile = function(config, callback) {
 
 
 /**
+ * Prepares a request for the 'orgSummary' OpenSecrets API endpoint.
+ *
+ * @param {Object} config
+ * @param {String} config.id
+ * @param {Function} callback
+ * @return {Null}
+ * @see {@link https://www.opensecrets.org/api/?output=doc&method=orgSummary|OpenSecrets}
+ */
+OpenSecrets.prototype.orgSummary = function(config, callback) {
+    return this._makeRequest({
+        method: "orgSummary",
+        params: config,
+    }, callback);
+};
+
+
+/**
  * Sends a HTTP GET request to the OpenSecrets API.
  *
  * @param {Object} config
