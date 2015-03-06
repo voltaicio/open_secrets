@@ -33,6 +33,7 @@ var apiKey = program.args[0],
 
 switch (method) {
     case "candContrib":
+    case "candIndustry":
         options.cid = program.cid;
         options.cycle = program.cycle;
         options.output = program.output;

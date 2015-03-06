@@ -55,6 +55,24 @@ OpenSecrets.prototype.candIndByInd = function(config, callback) {
 
 
 /**
+ * Prepares a request for the 'candIndustry' OpenSecrets API endpoint.
+ *
+ * @param {Object} config
+ * @param {String} config.cid
+ * @param {Number} config.cycle
+ * @param {String} config.output
+ * @param {Function} callback
+ * @return {Null}
+ */
+OpenSecrets.prototype.candIndustry = function(config, callback) {
+    return this._makeRequest({
+        method: "candIndustry",
+        params: config,
+    }, callback);
+};
+
+
+/**
  * Sends a HTTP GET request to the OpenSecrets API.
  *
  * @param {Object} config

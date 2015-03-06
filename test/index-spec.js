@@ -57,6 +57,21 @@ describe("candIndByInd", function() {
     });
 });
 
+describe("candIndustry", function() {
+    it("calls '_makeRequest'", function() {
+        var client = new OpenSecretsClient(API_KEY),
+            cfg = {
+                method: "candIndustry",
+                params: {}
+            },
+            callback = function() {};
+
+        spyOn(client, "_makeRequest");
+        client.candIndustry(cfg.params, callback);
+        expect(client._makeRequest).toHaveBeenCalledWith(cfg, callback);
+    });
+});
+
 describe("_makeRequest", function() {
     it("calls 'request'", function() {
         var client = new OpenSecretsClient(API_KEY);
