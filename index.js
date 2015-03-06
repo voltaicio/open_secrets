@@ -27,6 +27,7 @@ var OpenSecrets = module.exports = function(apiKey) {
  * @param {String} config.output
  * @param {Function} callback
  * @return {Null}
+ * @see {@link https://www.opensecrets.org/api/?output=doc&method=candContrib|OpenSecrets}
  */
 OpenSecrets.prototype.candContrib = function(config, callback) {
     return this._makeRequest({
@@ -45,6 +46,7 @@ OpenSecrets.prototype.candContrib = function(config, callback) {
  * @param {String} config.ind
  * @param {Function} callback
  * @return {Null}
+ * @see {@link https://www.opensecrets.org/api/?output=doc&method=candIndByInd|OpenSecrets}
  */
 OpenSecrets.prototype.candIndByInd = function(config, callback) {
     return this._makeRequest({
@@ -63,10 +65,30 @@ OpenSecrets.prototype.candIndByInd = function(config, callback) {
  * @param {String} config.output
  * @param {Function} callback
  * @return {Null}
+ * @see {@link https://www.opensecrets.org/api/?output=doc&method=candIndustry|OpenSecrets}
  */
 OpenSecrets.prototype.candIndustry = function(config, callback) {
     return this._makeRequest({
         method: "candIndustry",
+        params: config,
+    }, callback);
+};
+
+
+/**
+ * Prepares a request for the 'candSector' OpenSecrets API endpoint.
+ *
+ * @param {Object} config
+ * @param {String} config.cid
+ * @param {Number} config.cycle
+ * @param {String} config.output
+ * @param {Function} callback
+ * @return {Null}
+ * @see {@link https://www.opensecrets.org/api/?output=doc&method=candSector|OpenSecrets}
+ */
+OpenSecrets.prototype.candSector = function(config, callback) {
+    return this._makeRequest({
+        method: "candSector",
         params: config,
     }, callback);
 };
