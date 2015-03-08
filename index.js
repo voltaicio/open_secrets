@@ -188,8 +188,22 @@ OpenSecrets.prototype.candSummary = function(config, callback) {
  * @see {@link https://www.opensecrets.org/api/?output=doc&method=congCmteIndus|OpenSecrets}
  */
 OpenSecrets.prototype.congCmteIndus = function(config, callback) {
+    var methodName = "congCmteIndus";
+
+    validateType(config, "config", "object", methodName);
+    validateType(config.cmte, "config.cmte", "string", methodName);
+    validateType(config.congno, "config.congno", "number", methodName);
+    validateType(config.indus, "config.indus", "string", methodName);
+    validateType(config.output, "config.output", "string", methodName);
+    if (VALID_OUTPUTS.indexOf(config.output) === -1) {
+        throw new Error(
+            methodName + "(): invalid 'config.output' attribute '" + config.output +
+            "'; please choose from 'doc', 'json' or 'xml'.");
+    }
+    validateType(callback, "callback", "function", methodName);
+
     return this._makeRequest({
-        method: "congCmteIndus",
+        method: methodName,
         params: config,
     }, callback);
 };
