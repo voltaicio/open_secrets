@@ -638,31 +638,95 @@ describe("getOrgs", function() {
 });
 
 describe("memPFDprofile", function() {
+    var client = new OpenSecretsClient(API_KEY),
+        methodName = "memPFDprofile";
+
+    it("requires the 'config' parameter to be an object", function() {
+        var cfg = STRING,
+            callback = function() {};
+
+        expect(function() {
+            client[methodName](cfg, callback);
+        }).toThrow(new Error(
+            methodName + "(): 'config' must be an object."));
+    });
+
+    it("requires the 'config.cid' attribute to be a string", function() {
+        var cfg = { cid: NUMBER },
+            callback = function() {};
+
+        expect(function() {
+            client[methodName](cfg, callback);
+        }).toThrow(new Error(
+            methodName + "(): 'config.cid' must be a string."));
+    });
+
+    it("requires the 'callback' parameter to be a function", function() {
+        var cfg = { cid: STRING },
+            callback = STRING;
+
+        expect(function() {
+            client[methodName](cfg, callback);
+        }).toThrow(new Error(
+            methodName + "(): 'callback' must be a function."));
+    });
+
     it("calls '_makeRequest'", function() {
-        var client = new OpenSecretsClient(API_KEY),
-            cfg = {
-                method: "memPFDprofile",
-                params: {}
+        var cfg = {
+                method: methodName,
+                params: { cid: STRING }
             },
             callback = function() {};
 
         spyOn(client, "_makeRequest");
-        client.memPFDprofile(cfg.params, callback);
+        client[methodName](cfg.params, callback);
         expect(client._makeRequest).toHaveBeenCalledWith(cfg, callback);
     });
 });
 
 describe("orgSummary", function() {
+    var client = new OpenSecretsClient(API_KEY),
+        methodName = "orgSummary";
+
+    it("requires the 'config' parameter to be an object", function() {
+        var cfg = STRING,
+            callback = function() {};
+
+        expect(function() {
+            client[methodName](cfg, callback);
+        }).toThrow(new Error(
+            methodName + "(): 'config' must be an object."));
+    });
+
+    it("requires the 'config.oid' attribute to be a string", function() {
+        var cfg = { oid: NUMBER },
+            callback = function() {};
+
+        expect(function() {
+            client[methodName](cfg, callback);
+        }).toThrow(new Error(
+            methodName + "(): 'config.oid' must be a string."));
+    });
+
+    it("requires the 'callback' parameter to be a function", function() {
+        var cfg = { oid: STRING },
+            callback = STRING;
+
+        expect(function() {
+            client[methodName](cfg, callback);
+        }).toThrow(new Error(
+            methodName + "(): 'callback' must be a function."));
+    });
+
     it("calls '_makeRequest'", function() {
-        var client = new OpenSecretsClient(API_KEY),
-            cfg = {
-                method: "orgSummary",
-                params: {}
+        var cfg = {
+                method: methodName,
+                params: { oid: STRING }
             },
             callback = function() {};
 
         spyOn(client, "_makeRequest");
-        client.orgSummary(cfg.params, callback);
+        client[methodName](cfg.params, callback);
         expect(client._makeRequest).toHaveBeenCalledWith(cfg, callback);
     });
 });

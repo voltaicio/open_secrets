@@ -14,6 +14,7 @@ program
         "--id [string]", "2-character state code, 4-character district or specific CID")
     .option("--ind [string]", "3-character industry code")
     .option("--indus [string]", "3-character industry code")
+    .option("--oid [string]", "CRP organization ID")
     .option("--org [string]", "name or partial name of organization")
     .option("--output [string]", "output format, either json, xml or doc")
     .option("--year [integer]", "2010 data provided")
@@ -67,11 +68,9 @@ switch (method) {
         break;
     case "memPFDprofile":
         options.cid = program.cid;
-        options.output = program.output;
-        options.year = program.year;
         break;
     case "orgSummary":
-        options.id = program.id;
+        options.oid = program.oid;
         break;
     default:
         console.error("Unsupported method: " + method);

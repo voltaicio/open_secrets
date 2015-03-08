@@ -267,15 +267,22 @@ OpenSecrets.prototype.getOrgs = function(config, callback) {
  *
  * @param {Object} config
  * @param {String} config.cid
- * @param {String} config.output
- * @param {Number} config.year
  * @param {Function} callback
  * @return {Null}
  * @see {@link https://www.opensecrets.org/api/?output=doc&method=memPFDprofile|OpenSecrets}
  */
 OpenSecrets.prototype.memPFDprofile = function(config, callback) {
+    var methodName = "memPFDprofile";
+
+    validateType(config, "config", "object", methodName);
+    validateType(config.cid, "config.cid", "string", methodName);
+    validateType(callback, "callback", "function", methodName);
+
+    config.output = "xml";
+    config.output = 2010;
+
     return this._makeRequest({
-        method: "memPFDprofile",
+        method: methodName,
         params: config,
     }, callback);
 };
@@ -285,14 +292,20 @@ OpenSecrets.prototype.memPFDprofile = function(config, callback) {
  * Prepares a request for the 'orgSummary' OpenSecrets API endpoint.
  *
  * @param {Object} config
- * @param {String} config.id
+ * @param {String} config.oid
  * @param {Function} callback
  * @return {Null}
  * @see {@link https://www.opensecrets.org/api/?output=doc&method=orgSummary|OpenSecrets}
  */
 OpenSecrets.prototype.orgSummary = function(config, callback) {
+    var methodName = "orgSummary";
+
+    validateType(config, "config", "object", methodName);
+    validateType(config.oid, "config.oid", "string", methodName);
+    validateType(callback, "callback", "function", methodName);
+
     return this._makeRequest({
-        method: "orgSummary",
+        method: methodName,
         params: config,
     }, callback);
 };
