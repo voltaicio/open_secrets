@@ -3,6 +3,8 @@
 var querystring = require("querystring"),
     request = require("request");
 
+var VALID_OUTPUTS = ["doc", "json", "xml"];
+
 /**
  * OpenSecrets API client
  *
@@ -30,6 +32,24 @@ var OpenSecrets = module.exports = function(apiKey) {
  * @see {@link https://www.opensecrets.org/api/?output=doc&method=candContrib|OpenSecrets}
  */
 OpenSecrets.prototype.candContrib = function(config, callback) {
+    if (!config.cid || typeof(config.cid) !== "string") {
+        throw new Error("candContrib(): config.cid attribute must be a string.");
+    }
+    if (!config.cycle || typeof(config.cycle) !== "number") {
+        throw new Error("candContrib(): config.cycle attribute must be a number.");
+    }
+    if (!config.output || typeof(config.output) !== "string") {
+        throw new Error("candContrib(): config.output attribute must be a string.");
+    }
+    if (VALID_OUTPUTS.indexOf(config.output) === -1) {
+        throw new Error(
+            "candContrib(): invalid config.output attribute '" + config.output +
+            "'; please choose from 'doc', 'json' or 'xml'.");
+    }
+    if (!callback || typeof(callback) !== "function") {
+        throw new Error("candContrib(): callback parameter must be a function.");
+    }
+
     return this._makeRequest({
         method: "candContrib",
         params: config,
