@@ -32,16 +32,26 @@ describe("constructor", function() {
 
 describe("candContrib", function() {
     var client = new OpenSecretsClient(API_KEY),
-        method = "candContrib";
+        methodName = "candContrib";
 
-    it("requires the 'config.cid' attribute to be a string", function() {
-        var cfg = {},
+    it("requires the 'config' parameter to be an object", function() {
+        var cfg = STRING,
             callback = function() {};
 
         expect(function() {
-            client.candContrib(cfg, callback);
+            client[methodName](cfg, callback);
         }).toThrow(new Error(
-            "candContrib(): config.cid attribute must be a string."));
+            methodName + "(): 'config' must be an object."));
+    });
+
+    it("requires the 'config.cid' attribute to be a string", function() {
+        var cfg = { cid: NUMBER },
+            callback = function() {};
+
+        expect(function() {
+            client[methodName](cfg, callback);
+        }).toThrow(new Error(
+            methodName + "(): 'config.cid' must be a string."));
     });
 
     it("requires the 'config.cycle' attribute to be a number", function() {
@@ -49,9 +59,9 @@ describe("candContrib", function() {
             callback = function() {};
 
         expect(function() {
-            client.candContrib(cfg, callback);
+            client[methodName](cfg, callback);
         }).toThrow(new Error(
-            "candContrib(): config.cycle attribute must be a number."));
+            methodName + "(): 'config.cycle' must be a number."));
     });
 
     it("requires the 'config.output' attribute to be a string", function() {
@@ -59,9 +69,9 @@ describe("candContrib", function() {
             callback = function() {};
 
         expect(function() {
-            client.candContrib(cfg, callback);
+            client[methodName](cfg, callback);
         }).toThrow(new Error(
-            "candContrib(): config.output attribute must be a string."));
+            methodName + "(): 'config.output' must be a string."));
     });
 
     it("requires the 'config.output' attribute to be valid", function() {
@@ -69,9 +79,9 @@ describe("candContrib", function() {
             callback = function() {};
 
         expect(function() {
-            client.candContrib(cfg, callback);
+            client[methodName](cfg, callback);
         }).toThrow(new Error(
-            "candContrib(): invalid config.output attribute '" + STRING +
+            methodName + "(): invalid 'config.output' attribute '" + STRING +
             "'; please choose from 'doc', 'json' or 'xml'."));
     });
 
@@ -80,35 +90,88 @@ describe("candContrib", function() {
             callback = STRING;
 
         expect(function() {
-            client.candContrib(cfg, callback);
+            client[methodName](cfg, callback);
         }).toThrow(new Error(
-            "candContrib(): callback parameter must be a function."));
+            methodName + "(): 'callback' must be a function."));
     });
 
     it("calls '_makeRequest'", function() {
         var cfg = {
-                method: method,
+                method: methodName,
                 params: { cid: STRING, cycle: NUMBER, output: JSON_STR }
             },
             callback = function() {};
 
         spyOn(client, "_makeRequest");
-        client.candContrib(cfg.params, callback);
+        client[methodName](cfg.params, callback);
         expect(client._makeRequest).toHaveBeenCalledWith(cfg, callback);
     });
 });
 
 describe("candIndByInd", function() {
+    var client = new OpenSecretsClient(API_KEY),
+        methodName = "candIndByInd";
+
+    it("requires the 'config' parameter to be an object", function() {
+        var cfg = STRING,
+            callback = function() {};
+
+        expect(function() {
+            client[methodName](cfg, callback);
+        }).toThrow(new Error(
+            methodName + "(): 'config' must be an object."));
+    });
+
+    it("requires the 'config.cid' attribute to be a string", function() {
+        var cfg = { cid: NUMBER },
+            callback = function() {};
+
+        expect(function() {
+            client[methodName](cfg, callback);
+        }).toThrow(new Error(
+            methodName + "(): 'config.cid' must be a string."));
+    });
+
+    it("requires the 'config.cycle' attribute to be a number", function() {
+        var cfg = { cid: STRING, cylce: STRING },
+            callback = function() {};
+
+        expect(function() {
+            client[methodName](cfg, callback);
+        }).toThrow(new Error(
+            methodName + "(): 'config.cycle' must be a number."));
+    });
+
+    it("requires the 'config.ind' attribute to be a string", function() {
+        var cfg = { cid: STRING, cycle: NUMBER, ind: NUMBER },
+            callback = function() {};
+
+        expect(function() {
+            client[methodName](cfg, callback);
+        }).toThrow(new Error(
+            methodName + "(): 'config.ind' must be a string."));
+    });
+
+    it("requires the 'callback' parameter to be a function", function() {
+        var cfg = { cid: STRING, cycle: NUMBER, ind: STRING },
+            callback = STRING;
+
+        expect(function() {
+            client[methodName](cfg, callback);
+        }).toThrow(new Error(
+            methodName + "(): 'callback' must be a function."));
+    });
+
     it("calls '_makeRequest'", function() {
         var client = new OpenSecretsClient(API_KEY),
             cfg = {
-                method: "candIndByInd",
-                params: {}
+                method: methodName,
+                params: { cid: STRING, cycle: NUMBER, ind: STRING }
             },
             callback = function() {};
 
         spyOn(client, "_makeRequest");
-        client.candIndByInd(cfg.params, callback);
+        client[methodName](cfg.params, callback);
         expect(client._makeRequest).toHaveBeenCalledWith(cfg, callback);
     });
 });

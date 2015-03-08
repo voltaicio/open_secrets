@@ -32,26 +32,21 @@ var OpenSecrets = module.exports = function(apiKey) {
  * @see {@link https://www.opensecrets.org/api/?output=doc&method=candContrib|OpenSecrets}
  */
 OpenSecrets.prototype.candContrib = function(config, callback) {
-    if (!config.cid || typeof(config.cid) !== "string") {
-        throw new Error("candContrib(): config.cid attribute must be a string.");
-    }
-    if (!config.cycle || typeof(config.cycle) !== "number") {
-        throw new Error("candContrib(): config.cycle attribute must be a number.");
-    }
-    if (!config.output || typeof(config.output) !== "string") {
-        throw new Error("candContrib(): config.output attribute must be a string.");
-    }
+    var methodName = "candContrib";
+
+    validateType(config, "config", "object", methodName);
+    validateType(config.cid, "config.cid", "string", methodName);
+    validateType(config.cycle, "config.cycle", "number", methodName);
+    validateType(config.output, "config.output", "string", methodName);
     if (VALID_OUTPUTS.indexOf(config.output) === -1) {
         throw new Error(
-            "candContrib(): invalid config.output attribute '" + config.output +
+            methodName + "(): invalid 'config.output' attribute '" + config.output +
             "'; please choose from 'doc', 'json' or 'xml'.");
     }
-    if (!callback || typeof(callback) !== "function") {
-        throw new Error("candContrib(): callback parameter must be a function.");
-    }
+    validateType(callback, "callback", "function", methodName);
 
     return this._makeRequest({
-        method: "candContrib",
+        method: methodName,
         params: config,
     }, callback);
 };
@@ -69,8 +64,16 @@ OpenSecrets.prototype.candContrib = function(config, callback) {
  * @see {@link https://www.opensecrets.org/api/?output=doc&method=candIndByInd|OpenSecrets}
  */
 OpenSecrets.prototype.candIndByInd = function(config, callback) {
+    var methodName = "candIndByInd";
+
+    validateType(config, "config", "object", methodName);
+    validateType(config.cid, "config.cid", "string", methodName);
+    validateType(config.cycle, "config.cycle", "number", methodName);
+    validateType(config.ind, "config.ind", "string", methodName);
+    validateType(callback, "callback", "function", methodName);
+
     return this._makeRequest({
-        method: "candIndByInd",
+        method: methodName,
         params: config,
     }, callback);
 };
@@ -245,3 +248,27 @@ OpenSecrets.prototype._makeRequest = function(config, callback) {
         }
     });
 };
+
+
+/**
+ * Validates that a variable is defined and is of the expected type.
+ *
+ * @param {*} value
+ * @param {String} valueName
+ * @param {String} type
+ * @param {String} method
+ * @return null
+ */
+function validateType(value, valueName, type, method) {
+    if (typeof(value) === "undefined" || typeof(value) !== type) {
+        var indefiniteArticle = "a";
+
+        if (type === "object") {
+            indefiniteArticle = "an";
+        }
+
+        throw new Error(
+            method + "(): '" + valueName + "' must be " + indefiniteArticle + " " +
+            type + ".");
+    }
+}
