@@ -523,31 +523,116 @@ describe("congCmteIndus", function() {
 });
 
 describe("getLegislators", function() {
+    var client = new OpenSecretsClient(API_KEY),
+        methodName = "getLegislators";
+
+    it("requires the 'config' parameter to be an object", function() {
+        var cfg = STRING,
+            callback = function() {};
+
+        expect(function() {
+            client[methodName](cfg, callback);
+        }).toThrow(new Error(
+            methodName + "(): 'config' must be an object."));
+    });
+
+    it("requires the 'config.id' attribute to be a string", function() {
+        var cfg = { id: NUMBER },
+            callback = function() {};
+
+        expect(function() {
+            client[methodName](cfg, callback);
+        }).toThrow(new Error(
+            methodName + "(): 'config.id' must be a string."));
+    });
+
+    it("requires the 'config.output' attribute to be a string", function() {
+        var cfg = { id: STRING, output: NUMBER },
+            callback = function() {};
+
+        expect(function() {
+            client[methodName](cfg, callback);
+        }).toThrow(new Error(
+            methodName + "(): 'config.output' must be a string."));
+    });
+
+    it("requires the 'config.output' attribute to be valid", function() {
+        var cfg = { id: STRING, output: STRING },
+            callback = function() {};
+
+        expect(function() {
+            client[methodName](cfg, callback);
+        }).toThrow(new Error(
+            methodName + "(): invalid 'config.output' attribute '" + STRING +
+            "'; please choose from 'doc', 'json' or 'xml'."));
+    });
+
+    it("requires the 'callback' parameter to be a function", function() {
+        var cfg = { id: STRING, output: JSON_STRING },
+            callback = STRING;
+
+        expect(function() {
+            client[methodName](cfg, callback);
+        }).toThrow(new Error(
+            methodName + "(): 'callback' must be a function."));
+    });
+
     it("calls '_makeRequest'", function() {
-        var client = new OpenSecretsClient(API_KEY),
-            cfg = {
-                method: "getLegislators",
-                params: {}
+        var cfg = {
+                method: methodName,
+                params: { id: STRING, output: JSON_STRING }
             },
             callback = function() {};
 
         spyOn(client, "_makeRequest");
-        client.getLegislators(cfg.params, callback);
+        client[methodName](cfg.params, callback);
         expect(client._makeRequest).toHaveBeenCalledWith(cfg, callback);
     });
 });
 
 describe("getOrgs", function() {
+    var client = new OpenSecretsClient(API_KEY),
+        methodName = "getOrgs";
+
+    it("requires the 'config' parameter to be an object", function() {
+        var cfg = STRING,
+            callback = function() {};
+
+        expect(function() {
+            client[methodName](cfg, callback);
+        }).toThrow(new Error(
+            methodName + "(): 'config' must be an object."));
+    });
+
+    it("requires the 'config.org' attribute to be a string", function() {
+        var cfg = { org: NUMBER },
+            callback = function() {};
+
+        expect(function() {
+            client[methodName](cfg, callback);
+        }).toThrow(new Error(
+            methodName + "(): 'config.org' must be a string."));
+    });
+
+    it("requires the 'callback' parameter to be a function", function() {
+        var cfg = { org: STRING },
+            callback = STRING;
+
+        expect(function() {
+            client[methodName](cfg, callback);
+        }).toThrow(new Error(
+            methodName + "(): 'callback' must be a function."));
+    });
+
     it("calls '_makeRequest'", function() {
-        var client = new OpenSecretsClient(API_KEY),
-            cfg = {
-                method: "getOrgs",
-                params: {}
+        var cfg = {
+                method: methodName,
+                params: { org: STRING }
             },
             callback = function() {};
 
         spyOn(client, "_makeRequest");
-        client.getOrgs(cfg.params, callback);
+        client[methodName](cfg.params, callback);
         expect(client._makeRequest).toHaveBeenCalledWith(cfg, callback);
     });
 });

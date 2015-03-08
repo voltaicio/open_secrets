@@ -213,15 +213,27 @@ OpenSecrets.prototype.congCmteIndus = function(config, callback) {
  * Prepares a request for the 'getLegislators' OpenSecrets API endpoint.
  *
  * @param {Object} config
- * @param {String} config.output
  * @param {String} config.id
+ * @param {String} config.output
  * @param {Function} callback
  * @return {Null}
  * @see {@link https://www.opensecrets.org/api/?output=doc&method=getLegislators|OpenSecrets}
  */
 OpenSecrets.prototype.getLegislators = function(config, callback) {
+    var methodName = "getLegislators";
+
+    validateType(config, "config", "object", methodName);
+    validateType(config.id, "config.id", "string", methodName);
+    validateType(config.output, "config.output", "string", methodName);
+    if (VALID_OUTPUTS.indexOf(config.output) === -1) {
+        throw new Error(
+            methodName + "(): invalid 'config.output' attribute '" + config.output +
+            "'; please choose from 'doc', 'json' or 'xml'.");
+    }
+    validateType(callback, "callback", "function", methodName);
+
     return this._makeRequest({
-        method: "getLegislators",
+        method: methodName,
         params: config,
     }, callback);
 };
@@ -237,8 +249,14 @@ OpenSecrets.prototype.getLegislators = function(config, callback) {
  * @see {@link https://www.opensecrets.org/api/?output=doc&method=getOrgs|OpenSecrets}
  */
 OpenSecrets.prototype.getOrgs = function(config, callback) {
+    var methodName = "getOrgs";
+
+    validateType(config, "config", "object", methodName);
+    validateType(config.org, "config.org", "string", methodName);
+    validateType(callback, "callback", "function", methodName);
+
     return this._makeRequest({
-        method: "getOrgs",
+        method: methodName,
         params: config,
     }, callback);
 };
