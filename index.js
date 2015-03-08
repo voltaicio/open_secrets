@@ -91,8 +91,21 @@ OpenSecrets.prototype.candIndByInd = function(config, callback) {
  * @see {@link https://www.opensecrets.org/api/?output=doc&method=candIndustry|OpenSecrets}
  */
 OpenSecrets.prototype.candIndustry = function(config, callback) {
+    var methodName = "candIndustry";
+
+    validateType(config, "config", "object", methodName);
+    validateType(config.cid, "config.cid", "string", methodName);
+    validateType(config.cycle, "config.cycle", "number", methodName);
+    validateType(config.output, "config.output", "string", methodName);
+    if (VALID_OUTPUTS.indexOf(config.output) === -1) {
+        throw new Error(
+            methodName + "(): invalid 'config.output' attribute '" + config.output +
+            "'; please choose from 'doc', 'json' or 'xml'.");
+    }
+    validateType(callback, "callback", "function", methodName);
+
     return this._makeRequest({
-        method: "candIndustry",
+        method: methodName,
         params: config,
     }, callback);
 };
@@ -110,8 +123,21 @@ OpenSecrets.prototype.candIndustry = function(config, callback) {
  * @see {@link https://www.opensecrets.org/api/?output=doc&method=candSector|OpenSecrets}
  */
 OpenSecrets.prototype.candSector = function(config, callback) {
+    var methodName = "candSector";
+
+    validateType(config, "config", "object", methodName);
+    validateType(config.cid, "config.cid", "string", methodName);
+    validateType(config.cycle, "config.cycle", "number", methodName);
+    validateType(config.output, "config.output", "string", methodName);
+    if (VALID_OUTPUTS.indexOf(config.output) === -1) {
+        throw new Error(
+            methodName + "(): invalid 'config.output' attribute '" + config.output +
+            "'; please choose from 'doc', 'json' or 'xml'.");
+    }
+    validateType(callback, "callback", "function", methodName);
+
     return this._makeRequest({
-        method: "candSector",
+        method: methodName,
         params: config,
     }, callback);
 };
@@ -129,8 +155,21 @@ OpenSecrets.prototype.candSector = function(config, callback) {
  * @see {@link https://www.opensecrets.org/api/?output=doc&method=candSummary|OpenSecrets}
  */
 OpenSecrets.prototype.candSummary = function(config, callback) {
+    var methodName = "candSummary";
+
+    validateType(config, "config", "object", methodName);
+    validateType(config.cid, "config.cid", "string", methodName);
+    validateType(config.cycle, "config.cycle", "number", methodName);
+    validateType(config.output, "config.output", "string", methodName);
+    if (VALID_OUTPUTS.indexOf(config.output) === -1) {
+        throw new Error(
+            methodName + "(): invalid 'config.output' attribute '" + config.output +
+            "'; please choose from 'doc', 'json' or 'xml'.");
+    }
+    validateType(callback, "callback", "function", methodName);
+
     return this._makeRequest({
-        method: "candSummary",
+        method: methodName,
         params: config,
     }, callback);
 };

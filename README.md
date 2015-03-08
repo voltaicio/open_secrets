@@ -74,7 +74,7 @@ To run the examples:
 Testing
 -------
 
-The unit tests are written for Jasmine and can be execute with:
+The unit tests are written for Jasmine and can be executed with:
 
     $ npm test
 
