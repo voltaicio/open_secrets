@@ -45,17 +45,17 @@ switch (method) {
     case "candSector":
     case "candSummary":
         options.cid = program.cid;
-        options.cycle = program.cycle;
+        options.cycle = parseInt(program.cycle, 10);
         options.output = program.output;
         break;
     case "candIndByInd":
         options.cid = program.cid;
-        options.cycle = program.cycle;
+        options.cycle = parseInt(program.cycle, 10);
         options.ind = program.ind;
         break;
     case "congCmteIndus":
         options.cmte = program.cmte;
-        options.congno = program.congno;
+        options.congno = parseInt(program.congno, 10);
         options.indus = program.indus;
         options.output = program.output;
         break;

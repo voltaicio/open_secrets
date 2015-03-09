@@ -277,7 +277,7 @@ OpenSecrets.prototype.memPFDprofile = function(config, callback) {
     validateType(callback, "callback", "function", methodName);
 
     config.output = "xml";
-    config.output = 2010;
+    config.year = 2010;
 
     return this._makeRequest({
         method: methodName,
@@ -301,6 +301,11 @@ OpenSecrets.prototype.orgSummary = function(config, callback) {
     validateType(config, "config", "object", methodName);
     validateType(config.oid, "config.oid", "string", methodName);
     validateType(callback, "callback", "function", methodName);
+
+    // Referred to as 'oid' to avoid conflict with 'id' attribute of the
+    // getLegislators method.
+    config.id = config.oid;
+    delete config.oid;
 
     return this._makeRequest({
         method: methodName,

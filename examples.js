@@ -50,7 +50,7 @@ client.congCmteIndus(
     console.log(JSON.parse(res.body)["response"]["committee"]["member"]);
 });
 
-client.getLegislators({ output: "json", id: "CO" }, function(err, res) {
+client.getLegislators({ id: "CO", output: "json" }, function(err, res) {
     if (err) { throw err; }
     console.log("########### getLegislators ###########");
     console.log(JSON.parse(res.body)["response"]["legislator"]);
