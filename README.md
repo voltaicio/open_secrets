@@ -19,21 +19,24 @@ were deemed inappropriate. Additionally, this module:
 Setup
 -----
 
-You need an OpenSecrets API key to use this module; register for one here:
+1. You need an OpenSecrets API key to use this module; register for one here:
 https://www.opensecrets.org/api/admin/index.php?function=signup
+2.
+    $ npm install open_secrets
 
 Module Usage
 ------------
 
 Format:
 
+    var client = new OpenSecretsClient(<api_key>);
     client.<method>(<config>, <callback>);
 
 Example:
 
     var OpenSecretsClient = require("/index");
 
-    var client = new OpenSecretsClient("<api_key>"),
+    var client = new OpenSecretsClient("0123456789"),
         config = {
             cid: "N00008051",
             cycle: 2014,
@@ -64,7 +67,7 @@ To run the examples:
 
 1. Create a config.json file in the module root:
 
-    $ echo '{ "apiKey": "<api_key>" }' > config.json
+    $ echo '{ "apiKey": "0123456789" }' > config.json
 
 2. Execute (WARNING: use judiciously because the examples submit live
    requests that count against your API quota):
@@ -77,6 +80,10 @@ Testing
 The unit tests are written for Jasmine and can be executed with:
 
     $ npm test
+
+...or if you have jasmine-node installed globally:
+
+    $ jasmine-node test
 
 Contributions
 -------------

@@ -13,9 +13,7 @@ var VALID_OUTPUTS = ["doc", "json", "xml"];
  * @return {Null}
  */
 var OpenSecrets = module.exports = function(apiKey) {
-    if (!apiKey || typeof(apiKey) !== "string") {
-        throw new Error("constructor(): first parameter must be a string.");
-    }
+    validateType(apiKey, "apiKey", "string", "constructor");
     this.apiKey = apiKey;
 };
 

@@ -10,13 +10,13 @@ describe("constructor", function() {
     it("requires the 'apiKey' parameter", function() {
         expect(function() {
             new OpenSecretsClient();
-        }).toThrow(new Error("constructor(): first parameter must be a string."));
+        }).toThrow(new Error("constructor(): 'apiKey' must be a string."));
     });
 
     it("expects the 'apiKey' parameter to be a string", function() {
         expect(function() {
             new OpenSecretsClient(0);
-        }).toThrow(new Error("constructor(): first parameter must be a string."));
+        }).toThrow(new Error("constructor(): 'apiKey' must be a string."));
     });
 
     it("stores the 'apiKey' parameter as an attribute", function() {
