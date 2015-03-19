@@ -302,7 +302,7 @@ OpenSecrets.prototype.orgSummary = function(config, callback) {
     validateType(config.oid, "config.oid", "string", methodName);
     validateType(callback, "callback", "function", methodName);
 
-    // Referred to as 'oid' to avoid conflict with 'id' attribute of the
+    // Referred to as 'oid' to avoid CLI conflict with 'id' attribute of the
     // getLegislators method.
     config.id = config.oid;
     delete config.oid;
@@ -347,7 +347,9 @@ OpenSecrets.prototype._makeRequest = function(config, callback) {
  * @return null
  */
 function validateType(value, valueName, type, method) {
-    if (typeof(value) === "undefined" || typeof(value) !== type) {
+    if (typeof(value) === "undefined") {
+        throw new Error(method + "(): '" + valueName + "' must be defined.");
+    } else if (typeof(value) !== type) {
         var indefiniteArticle = "a";
 
         if (type === "object") {

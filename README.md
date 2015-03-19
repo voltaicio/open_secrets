@@ -7,7 +7,7 @@ Overview
 --------
 
 This project is largely based upon the work started with [opensecrets](https://github.com/ameensol/opensecrets).
-The NodeJS module contained herein implements a different API than ameensol's
+The NodeJS module contained herein implements a different API than [ameensol's](https://github.com/ameensol)
 module, thus simple pull-requests were deemed inappropriate. Additionally,
 this module:
 
