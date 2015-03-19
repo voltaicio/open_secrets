@@ -6,10 +6,10 @@ A NodeJS toolset for working with the OpenSecrets API.
 Overview
 --------
 
-This project is largely based upon the work started with
-https://github.com/ameensol/opensecrets. The NodeJS module contained herein
-implements a different API than ameensol's module, thus simple pull-requests
-were deemed inappropriate. Additionally, this module:
+This project is largely based upon the work started with [opensecrets](https://github.com/ameensol/opensecrets).
+The NodeJS module contained herein implements a different API than ameensol's
+module, thus simple pull-requests were deemed inappropriate. Additionally,
+this module:
 
 1. Includes a CLI client
 2. Includes unit tests
@@ -19,9 +19,9 @@ were deemed inappropriate. Additionally, this module:
 Setup
 -----
 
-1. You need an OpenSecrets API key to use this module; register for one here:
-https://www.opensecrets.org/api/admin/index.php?function=signup
-2.
+Register for an [API key](https://www.opensecrets.org/api/admin/index.php?function=signup),
+and then install the package:
+
     $ npm install open_secrets
 
 Module Usage
@@ -34,7 +34,7 @@ Format:
 
 Example:
 
-    var OpenSecretsClient = require("/index");
+    var OpenSecretsClient = require("./index");
 
     var client = new OpenSecretsClient("0123456789"),
         config = {
@@ -63,14 +63,11 @@ Example:
 Examples
 --------
 
-To run the examples:
-
-1. Create a config.json file in the module root:
+To run the examples, create a config.json file in the module root:
 
     $ echo '{ "apiKey": "0123456789" }' > config.json
 
-2. Execute (WARNING: use judiciously because the examples submit live
-   requests that count against your API quota):
+...and then execute (WARNING: use judiciously because the examples submit live requests that count against your API quota):
 
     $ node examples.js
 
